@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/your-app-name
     docker:
-      - image: circleci/ruby:2.5.1
+      - image: circleci/ruby:2.4.1
         environment:
           PGHOST: localhost
           PGUSER: your-app-name
@@ -34,6 +34,8 @@ jobs:
 
       # Wait for DB
       - run: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      # Setup the environment
 
       # Setup the database
       - run: bundle exec rake db:setup
